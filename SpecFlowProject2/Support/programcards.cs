@@ -24,7 +24,6 @@ namespace SpecFlowProject2.Support
 
         public void swipe(string p0)//for swiping program cards
         {
-            
                 AndroidElement screenSize = driver.FindElement(SwipeLeft);
                 int screenWidth = screenSize.Size.Width;
                 int screenHeight = screenSize.Size.Height;
@@ -35,11 +34,9 @@ namespace SpecFlowProject2.Support
                 action.Press(screenWidth, y).MoveTo(endX, y).Release().Perform();
         }
         public void Soundenhancer(string p0)//for clicking soundenhancer
-        {
-            
+        {    
                 AndroidElement soundenhancer = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc=\"HomeButtonLabelFineTune\"]"));
-                soundenhancer.Click();
-           
+                soundenhancer.Click();           
         }
 
         public void tinnitus(String p0)//for clicking tinnitus manager

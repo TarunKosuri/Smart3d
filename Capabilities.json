@@ -1,0 +1,9 @@
+{
+  "platformName": "Android",
+  "deviceName": "OnePlus 9R",
+  "platform Version": "12",
+  "udid": "0e760502",
+  "Appium Server Address": "127.0.0.1:4723",
+  "app": "C:\\Users\\iray3\\Desktop\\apk\\dk.resound.smart3d-Signed.apk",
+  "appPackage": "dk.resound.smart3d"
+}

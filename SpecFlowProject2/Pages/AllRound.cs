@@ -1,5 +1,4 @@
-﻿
-using OpenQA.Selenium.Appium.Android;
+﻿using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium;
 using System;
@@ -14,6 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using OpenQA.Selenium.Appium.Interfaces;
 using System.Drawing;
 using SpecFlowProject2.Support;
+using SpecFlowProject2.utility;
 
 namespace SpecFlowProject2.Pages
 {
@@ -26,6 +26,7 @@ namespace SpecFlowProject2.Pages
         {
             this.driver = driver;
         }
+        
         By verify = By.Id("dk.resound.smart3d:id/card_title");
         By split = By.Id("dk.resound.smart3d:id/SplitImageView_bottom");
         By slide1 = By.XPath("(//android.widget.ImageView[@index='2'])[2]");
@@ -44,9 +45,31 @@ namespace SpecFlowProject2.Pages
         By allaroundprogramoverview = By.XPath("//android.widget.ImageView[@content-desc=\"prg_allaround_m\"]");
         By programoverviewexit = By.XPath("//android.widget.ImageView[@content-desc=\"icon_close_m\"]");
         By myresound = By.XPath("//android.widget.TextView[@content-desc=\"TabBarPersonalTitle\"]");
-        By Learnaboutapp = By.XPath("//android.widget.TextView[@content-desc=\"MyResoundLearningMenuTitleApp\"]");
-        By volumecontrol = By.XPath("//android.widget.TextView[@content-desc=\"HelpChapterTitleVolumeControls\"]");
-
+        By Learnaboutapp1 = By.XPath("//android.widget.TextView[@content-desc=\"MyResoundLearningMenuTitleApp\"]");
+        By volumecontrol1 = By.XPath("//android.widget.TextView[@content-desc=\"HelpChapterTitleVolumeControls\"]");
+        By volumecontrolswipe = By.XPath("(//android.widget.FrameLayout[@index='0'])[4]");
+        By close = By.XPath("//android.widget.ImageView[@content-desc=\"icon_close_m\"]");
+        By volumecontrolswipe1 = By.XPath("(//android.widget.FrameLayout[@index='1'])[1]");
+        By guidingtips = By.XPath("//android.widget.TextView[@content-desc=\"MyMenuNudgingTipsText\"]");
+        By validateguidingtips = By.XPath("//android.widget.TextView[@content-desc=\"MyMenuNudgingTipsText\"]");
+        By guidingtipsnoisefilter = By.XPath("(//android.widget.ImageView[@content-desc=\"icon_dot_nudge_default_s\"])[8]");
+        By guidingtipsMusic = By.XPath("(//android.widget.ImageView[@content-desc=\"icon_dot_nudge_default_s\"])[4]");
+        By back = By.XPath("//android.widget.ImageView[@content-desc=\"icon_arrow_back_m\"]");
+        By More = By.XPath("//android.widget.ImageView[@content-desc=\"bottom_menu_icon_menu\"]");
+        By Autoactivate = By.XPath("//android.widget.Switch[@content-desc=\"AppAutoActivateSwitch\"]");
+        By About = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralAboutText\"]");
+        By Aboutverify = By.XPath("//android.widget.TextView[@content-desc=\"AboutHeaderTitle\"]");
+        By legalinformation = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralLegalInformationText\"]");
+        By manufacturer = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralLegalSubmenuManufacturerText\"]");
+        By tandc = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralLegalSubmenuTermsOfUseText\"]");
+        By privacypolicy = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralLegalSubmenuPrivacyPolicyText\"]");
+        By verifyManufacturer = By.XPath("//android.widget.TextView[@content-desc=\"ManufacturerHeaderTitle\"]");
+        By verifytandc = By.XPath("//android.widget.TextView[@content-desc=\"EntryflowTitleTermsOfUse\"]");
+        By verifyprivacy = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralLegalSubmenuPrivacyPolicyText\"]");
+        By support = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralSupportText\"]");
+        By Verifysupport = By.XPath("//android.widget.TextView[@content-desc=\"MoreGeneralSupportText\"]"); 
+        By home = By.XPath("//android.widget.ImageView[@content-desc=\"bottom_menu_icon_main\"]");
+        
         public string GetTitle()//verify the title of the page
         {
             return driver.FindElement(verify).Text;
@@ -96,23 +119,25 @@ namespace SpecFlowProject2.Pages
 
         public void validate3(string volume)//used to check if right hi is in 3
         {
-            Actions action = new Actions(driver);
-            AndroidElement slide3 = driver.FindElement(slide1);
-            action.ClickAndHold(slide3).Perform();
-            action.MoveByOffset(1, 0).Perform();
-            string act_value = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc='VolumeChanging']")).Text;
-            Assert.AreEqual(act_value, volume);
-            action.Release().Perform();
+            //Actions action = new Actions(driver);
+            //AndroidElement slide3 = driver.FindElement(slide1);
+            //action.ClickAndHold(slide3).Perform();
+            //action.MoveByOffset(1, 0).Perform();
+            //string act_value = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc='VolumeChanging']")).Text;
+            //Assert.AreEqual(act_value, volume);
+            //action.Release().Perform();
+            ControlHelpers.ValidateSlider(volume, slide1, By.XPath("//android.widget.TextView[@content-desc='VolumeChanging']"));
         }
         public void validate10(String volume)//used to check if left hi is in 10
         {
-            Actions action = new Actions(driver);
-            AndroidElement slide4 = driver.FindElement(slide2);
-            action.ClickAndHold(slide4).Perform();
-            action.MoveByOffset(1, 0).Perform();
-            string actual_value = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc=\"VolumeChanging\"]")).Text;
-            Assert.AreEqual(actual_value, volume);
-            action.Release().Perform();
+            //Actions action = new Actions(driver);
+            //AndroidElement slide4 = driver.FindElement(slide2);
+            //action.ClickAndHold(slide4).Perform();
+            //action.MoveByOffset(1, 0).Perform();
+            //string actual_value = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc=\"VolumeChanging\"]")).Text;
+            //Assert.AreEqual(actual_value, volume);
+            //action.Release().Perform();
+            ControlHelpers.ValidateSlider(volume, slide2, By.XPath("//android.widget.TextView[@content-desc='VolumeChanging']"));
         }
         public void merg()//used to merge the split 
         {
@@ -132,7 +157,7 @@ namespace SpecFlowProject2.Pages
         {
             Actions action = new Actions(driver);
             AndroidElement slide = driver.FindElement(slider);
-            action.ClickAndHold(slide).MoveByOffset(670, 0).Perform();
+            action.ClickAndHold(slide).MoveByOffset(570, 0).Perform();
         }
         public void validate13(String volume)//used to validate if the volume is in 13
         {
@@ -149,13 +174,9 @@ namespace SpecFlowProject2.Pages
         }
         public void validateSpeechclarity(string p0)//used to validate if speech clarity is enabled
         {
-
             AndroidElement speech = driver.FindElement(speechclarity);
             bool isClicked = speech.Selected;
-
             Assert.IsTrue(isClicked, "speech clarity is enabled");
-
-
         }
 
         public void Noisefilter(string p0)//used to click noise filter
@@ -166,17 +187,13 @@ namespace SpecFlowProject2.Pages
         public void validatenoisefilter(string p0)//used to validate if noise filter is enabled
         {
             AndroidElement noise = driver.FindElement(noisefilter);
-
             bool isClicked = noise.Selected;
-
             Assert.IsTrue(isClicked, "noise filter is enabled");
-
         }
         public void disablespeechclarity(string p0)//used to check if speech clarity is disabled
         {
             AndroidElement speech = driver.FindElement(speechclarity);
             bool isClicked = !speech.Selected;
-
             Assert.IsTrue(isClicked, "speech clarity is disabled");
         }
 
@@ -255,32 +272,181 @@ namespace SpecFlowProject2.Pages
         {
             driver.FindElement(allaround).Click();
         }
-        public void Programoverview()
+        public void Programoverview()//click on program over view
         {
             driver.FindElement(programoverview).Click();
         }
-        public void allroundpoclick(string p0)
+        public void allroundpoclick(string p0)//click on allround in po
         {
             driver.FindElement(allaroundprogramoverview).Click();
         }
-        public void poexit(string p0)
+        public void poexit(string p0)//click on po exit
         {
             driver.FindElement(programoverviewexit).Click();
         }
-        public void Myresound(string p0)
+        public void Myresound(string p0)//click on MYResound in bottom ribbon
         {
             driver.FindElement(myresound).Click();
         }
-       public void learnaboutapp(string p0)
+       public void learnaboutapp(string p0)//click on learn about app in my resound
         {
-            driver.FindElement(Learnaboutapp).Click();  
+            driver.FindElement(Learnaboutapp1).Click();  
         }
-        public void Volumecontrol(string p0)
+        public void Volumecontrol(string p0)//click on volume control in learn about app
         {
-            driver.FindElement(volumecontrol).Click();
+            driver.FindElement(volumecontrol1).Click();
+        }
+        public void Volumecontrolswipe(string p1)// swiping in volume control
+        {
+            AndroidElement screenSize = driver.FindElement(volumecontrolswipe);
+            int screenWidth = screenSize.Size.Width; 
+            int screenHeight = screenSize.Size.Height;
+            int endX = 0;
+            int y = screenHeight / 2;
+            TouchAction action = new TouchAction(driver);
+            AndroidElement swipeleft = driver.FindElement(volumecontrolswipe);
+            action.Press(screenWidth, y).MoveTo(endX, y).Release().Perform();
+        }
+        public void Volumecontrolswipe1(string p1)
+        {
+            AndroidElement screenSize = driver.FindElement(volumecontrolswipe1);
+            int screenWidth = screenSize.Size.Width;
+            int screenHeight = screenSize.Size.Height;
+            int endX = 0;
+            int y = screenHeight / 2;
+            TouchAction action = new TouchAction(driver);
+            AndroidElement swipeleft = driver.FindElement(volumecontrolswipe1);
+            action.Press(screenWidth, y).MoveTo(endX, y).Release().Perform();
+        }
+        public void verifyvoicecontrolswipe(string p0)//verify after swiping in volume control
+        {
+            string actualText =driver.FindElement(By.XPath("//android.widget.TextView[@content-desc=\"HelpVolumeControlsSplitTitle\"]")).Text;
+            Assert.AreEqual(actualText, p0);
+        }
+      
+        public void verifyvoicecontrolswipe1(string p0)//verify after swiping in volume control
+        {
+            string actualText = driver.FindElement(By.XPath("//android.widget.TextView[@content-desc=\"HelpVolumeControlsMuteTitle\"]")).Text;
+            Assert.AreEqual(actualText, p0);
+
+        }
+        public void Close()//closing volume control
+        {
+            driver.FindElement(close).Click();
+        }
+        public void Back()//press back 
+        {
+            driver.FindElement(back).Click();
+        }
+      
+       public void Guidingtips(string p0)// clicking on guiding tips in myresound
+        {
+            driver.FindElement(guidingtips).Click();
+        }
+        public void ValidateGuidingtips(string p0)// validate if we are in guiding tips
+        {
+            string actualText = driver.FindElement(validateguidingtips).Text;
+            Assert.AreEqual(actualText, p0);
+        }
+        public void guidingtipsnoise(string p0)//click noise filter in guiding tips
+        {
+            driver.FindElement(guidingtipsnoisefilter).Click();
+        }
+        public void guidingtipsmusic(string p0)//click music on guiding tips
+        {
+            driver.FindElement(guidingtipsMusic).Click();
+        }
+        public void more(string p0)// click on more in bottom ribbon bar
+        {
+            driver.FindElement(More).Click();
+        }
+        public void autoactivate(string p0)//verify auto activate button is on
+        {
+            bool actual_value = driver.FindElement(By.XPath("//android.widget.Switch[@content-desc=\"AppAutoActivateSwitch\"]")).GetAttribute("checked") == "True";
+            Assert.IsTrue(actual_value, "The switch is not turned on.");
+        }
+        public void pressautoactivate(string p0)//click autoactivate button
+        {
+            driver.FindElement(Autoactivate).Click();
+        }
+        public void autoActivate(string p0)//verify if auto activate button is off
+        {
+            bool actual_value = driver.FindElement(By.XPath("//android.widget.Switch[@content-desc=\"AppAutoActivateSwitch\"]")).GetAttribute("checked") == "false";
+            Assert.IsTrue(actual_value, "The switch is  turned on.");
+        }
+        public void about(String p0)//click on about in more
+        {
+            driver.FindElement(About).Click();
+        }
+        public string validateabouttitle()//validate if we are in about 
+        {
+           return driver.FindElement(Aboutverify).Text;
+        }
+        public void AboutIsLoaded()
+        {
+            
+            
+                bool Actual_value= driver.FindElement(By.XPath("//android.webkit.WebView[@content-desc=\"AboutBody\"]")).Displayed;
+                Assert.IsTrue(Actual_value, "Page is loaded.");
+            
+          
+        }
+        public void Back1()//go back to more menu
+        {
+            driver.FindElement(back).Click();
+        }
+        public void Legalinformation(string p0)//click on legal information in more menu
+        {
+            driver.FindElement(legalinformation).Click();
+        }
+        public void Manufacturer(string p0)//click on manufacturer in more menu
+        {
+            driver.FindElement(manufacturer).Click();
+        }
+        public void terms(string p0)// click on terms and conditions
+        {
+            driver.FindElement(tandc).Click();
+        }
+        public void Privacy(string p0)//click on privacy 
+        {
+            driver.FindElement(privacypolicy).Click();
+        }
+        public void privacyIsLoaded()
+        {
+            bool Actual_value = driver.FindElement(By.ClassName("androidx.recyclerview.widget.RecyclerView")).Displayed;
+            Assert.IsTrue(Actual_value, "Page is loaded.");
+        }
+        public string VerifyManufacturer()
+        {
+            return driver.FindElement(verifyManufacturer).Text;
+        }
+        public string Verifyterms()
+        {
+            return driver.FindElement(verifytandc).Text;
+        }
+        public string Verifyprivacy()
+        {
+            return driver.FindElement(verifyprivacy).Text;
+        }
+        public void Support(string p0)
+        {
+            driver.FindElement(support).Click();
+        }
+        public void supportIsLoaded()
+        {
+            bool Actual_value = driver.FindElement(By.XPath("(//androidx.recyclerview.widget.RecyclerView[@index='0'])[1]")).Displayed;
+            Assert.IsTrue(Actual_value, "Page is loaded.");
+        }
+        public string verifysupport()
+        {
+            return driver.FindElement(Verifysupport).Text;
+        }
+        public void Home(string p0)
+        {
+            driver.FindElement(home).Click();
         }
     }
-    }
+}
 
     
 
